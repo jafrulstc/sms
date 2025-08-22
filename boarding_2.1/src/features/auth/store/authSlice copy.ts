@@ -1,6 +1,32 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
 import { authApi } from '~/features/auth/services/authApi';
-import { AuthState, LoginCredentials } from '~/features/auth/types/auth';
+import { LoginCredentials, User } from '~/features/auth/types/auth';
+
+/**
+ * User role type
+ */
+export type UserRole = 'super_admin' | 'admin' | 'teacher' | 'student' | 'staff';
+
+/**
+ * Module permission interface
+ */
+export interface ModulePermission {
+  moduleValue: string;
+  permissions: string[];
+}
+
+
+/**
+ * Auth state interface
+ */
+export interface AuthState {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  loading: boolean;
+  error: string | null;
+  currentModule: string | null;
+}
 
 /**
  * Initial state
