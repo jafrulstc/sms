@@ -8,7 +8,7 @@ import {
   verifyToken,
 } from '../store/authSlice';
 import { LoadingSpinner } from '~/shared/components/ui/LoadingSpinner';
-import type { User } from '../types/auth';
+import type { User } from '../types';
 
 interface AuthContextValue {
   user: User | null;

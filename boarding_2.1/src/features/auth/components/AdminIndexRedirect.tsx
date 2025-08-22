@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '~/app/store/hooks';
 import { selectUser, selectCurrentModule } from '../store/authSlice';

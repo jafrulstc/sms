@@ -1,8 +1,9 @@
 import type { BaseEntity } from '~/shared/types/common';
 
 /**
- * User role type
+ * User role enumeration
  */
+
 export type UserRole = 'super_admin' | 'admin' | 'teacher' | 'student' | 'staff';
 
 /**
@@ -25,7 +26,8 @@ export interface User extends BaseEntity {
   permissions: ModulePermission[];
   defaultModule?: string;
   isActive: boolean;
-  password?: string; // Added password field for authentication
+  lastLoginAt?: string;
+  profilePicture?: string;
 }
 
 /**
@@ -34,21 +36,7 @@ export interface User extends BaseEntity {
 export interface LoginCredentials {
   username: string;
   password: string;
-  module: string; // Added module field
   rememberMe?: boolean;
-}
-
-
-/**
- * Auth state interface
- */
-export interface AuthState {
-  user: User | null;
-  token: string | null;
-  isAuthenticated: boolean;
-  loading: boolean;
-  error: string | null;
-  currentModule: string | null;
 }
 
 /**
