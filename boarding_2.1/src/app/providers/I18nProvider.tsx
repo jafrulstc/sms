@@ -13,3 +13,5 @@ interface I18nProviderProps {
 export const I18nProvider = ({ children }: I18nProviderProps) => {
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 };
+
+

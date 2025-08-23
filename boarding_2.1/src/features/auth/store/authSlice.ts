@@ -1,55 +1,6 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
-import { authApi } from '../services/authApi';
-
-/**
- * User role type
- */
-export type UserRole = 'super_admin' | 'admin' | 'teacher' | 'student' | 'staff';
-
-/**
- * Module permission interface
- */
-export interface ModulePermission {
-  moduleValue: string;
-  permissions: string[];
-}
-
-/**
- * User interface
- */
-export interface User {
-  id: string;
-  username: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  role: UserRole;
-  permissions: ModulePermission[];
-  defaultModule?: string;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt?: string;
-}
-
-/**
- * Login credentials interface
- */
-export interface LoginCredentials {
-  username: string;
-  password: string;
-}
-
-/**
- * Auth state interface
- */
-export interface AuthState {
-  user: User | null;
-  token: string | null;
-  isAuthenticated: boolean;
-  loading: boolean;
-  error: string | null;
-  currentModule: string | null;
-}
+import { authApi } from '~/features/auth/services/authApi';
+import { AuthState, LoginCredentials } from '~/features/auth/types/auth';
 
 /**
  * Initial state
@@ -75,15 +26,14 @@ export const login = createAsyncThunk(
       // Store token in localStorage
       localStorage.setItem('authToken', response.token);
       
-      // Set current module to user's default module or first available module
-      const defaultModule = response.user.defaultModule || 
-        (response.user.permissions.length > 0 ? response.user.permissions[0].moduleValue : null);
+      // Set current module to the selected module from login
+      const selectedModule = credentials.module;
       
-      if (defaultModule) {
-        localStorage.setItem('currentModule', defaultModule);
+      if (selectedModule) {
+        localStorage.setItem('currentModule', selectedModule);
       }
       
-      return { ...response, currentModule: defaultModule };
+      return { ...response, currentModule: selectedModule };
     } catch (error: any) {
       return rejectWithValue(error.message || 'Login failed');
     }

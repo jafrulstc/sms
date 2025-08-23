@@ -229,15 +229,15 @@ export const Sidebar = () => {
   const getModuleDisplayName = (module: string | null): string => {
     switch (module) {
       case 'hostel':
-        return 'Hostel Management';
+        return t('navigation.sidebar.module.hostel');
       case 'education':
-        return 'Education System';
+        return t('navigation.sidebar.module.education');
       case 'accounts':
-        return 'Accounts Management';
+        return t('navigation.sidebar.module.accounts');
       case 'library':
-        return 'Library System';
+        return t('navigation.sidebar.module.library');
       case 'boarding':
-        return 'Boarding Management';
+        return t('navigation.sidebar.module.boarding');
       default:
         return 'Management System';
     }
@@ -303,7 +303,7 @@ export const Sidebar = () => {
     <ListItemIcon>
         <Icon />
     </ListItemIcon>
-    <ListItemText primary={t(`navigation.${item.key}`)} />
+    <ListItemText primary={t(`navigation.sidebar.items.${item.key}`)} />
     {hasSubItems && (isExpanded ? <ExpandLess /> : <ExpandMore />)}
 </ListItemButton>
               </ListItem>
@@ -338,7 +338,7 @@ export const Sidebar = () => {
                             <ListItemIcon>
                               <SubIcon />
                             </ListItemIcon>
-                            <ListItemText primary={subItem.label} />
+                            <ListItemText primary={t(`navigation.sidebar.items.${subItem.key}`)} />
                           </ListItemButton>
                         </ListItem>
                       );

@@ -56,7 +56,7 @@ export const LANGUAGE_CONSTANTS = {
     { code: 'bn', name: 'বাংলা', flag: '🇧🇩' },
     { code: 'ar', name: 'العربية', flag: '🇸🇦' },
   ] as const,
-  DEFAULT_LANGUAGE: 'en',
+  DEFAULT_LANGUAGE: 'bn',
   STORAGE_KEY: 'language',
 } as const;
 

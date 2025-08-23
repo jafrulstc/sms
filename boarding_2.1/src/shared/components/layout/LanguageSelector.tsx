@@ -30,6 +30,7 @@ export const LanguageSelector = () => {
    * Change application language
    */
   const handleLanguageChange = (languageCode: string): void => {
+    console.log("change language code : ", languageCode);
     i18n.changeLanguage(languageCode);
     localStorage.setItem(LANGUAGE_CONSTANTS.STORAGE_KEY, languageCode);
     handleClose();

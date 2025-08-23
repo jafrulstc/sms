@@ -215,19 +215,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="settings"
-              element={
-                <ProtectedRoute>
-                  <Box sx={{ p: 4, textAlign: "center" }}>
-                    <Typography variant="h4" gutterBottom>
-                      Settings
-                    </Typography>
-                    <Typography>This feature is coming soon.</Typography>
-                  </Box>
-                </ProtectedRoute>
-              }
-            />
 
             {/* Catch-all for unknown admin routes */}
             <Route path="*" element={<NotFoundPage />} />

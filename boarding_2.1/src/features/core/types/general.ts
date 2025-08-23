@@ -70,6 +70,13 @@ export interface GuardianDetail extends Guardian {
   permanentAddressDetails?: Address;
 }
 
+export interface DesignationCategory extends BaseEntity {
+  name: string
+}
+export interface EducationalMentor extends Guardian {}
+
+export interface EducationalMentorDetail extends GuardianDetail {}
+
 /** General entity types */
 export type GeneralEntityType =
   | 'gender'
